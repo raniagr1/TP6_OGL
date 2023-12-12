@@ -14,17 +14,12 @@ import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class MatrixSteps {
-
+    
+    Matrix inverseMatrix ;
     Matrix cofactorMatrix ;
     Matrix mat;
-
-    @Given("I have A Matrix")
-    public void iHaveAMatrix() {
-         mat=new Matrix();
-    }
-
-
-    // Cofactor
+	
+	// Cofactor
 
     @When("I compute cofactor of")
     public void iComputeCofactorOf(DataTable table) throws NoSquareException {
@@ -58,5 +53,46 @@ public class MatrixSteps {
 
 
     }
+
+    @Given("I have A Matrix")
+    public void iHaveAMatrix() {
+         mat=new Matrix();
+    }
+
+    @When("I compute inverse of")
+    public void iComputeInverseOf(DataTable table) throws NoSquareException {
+        double [][] data = new double[2][2];
+        List<Map<String, Double>> rows = table.asMaps(String.class, Double.class);
+        int i =0;
+        for (Map<String, Double> columns : rows){
+            int j =0;
+            data[i][j]= columns.get("col1");
+            data[i][j+1] = columns.get("col2");
+            i=i+1;
+        }
+        mat.setData(data);
+        inverseMatrix = MatrixMathematics.inverse(mat);
+    }
+
+    @Then("The result of inverse is")
+    public void iFindAsInverseResult(DataTable table) {
+        double [][] data = new double[2][2];
+        List<Map<String, Double>> rows = table.asMaps(String.class, Double.class);
+        int i =0;
+        for (Map<String, Double> columns : rows){
+            int j =0;
+            data[i][j]= columns.get("col1");
+            data[i][j+1] = columns.get("col2");
+            i=i+1;
+        }
+        Matrix result = new Matrix() ;
+        result.setData(data);
+        assertEquals(result,inverseMatrix);
+
+
+    }
+
+
+    
 }
 
