@@ -1,0 +1,96 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "start_timestamp": "2023-12-12T10:49:08.130Z",
+        "line": 5,
+        "name": "Determinant",
+        "description": "",
+        "id": "matrix;determinant",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2009500,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I have A Matrix",
+            "match": {
+              "location": "MatrixSteps.iHaveAMatrix()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 4002300,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I compute determinant of",
+            "match": {
+              "location": "MatrixSteps.iComputeDeterminantOf(io.cucumber.datatable.DataTable)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "col1",
+                  "col2",
+                  "col3"
+                ]
+              },
+              {
+                "cells": [
+                  "1",
+                  "2",
+                  "3"
+                ]
+              },
+              {
+                "cells": [
+                  "4",
+                  "5",
+                  "6"
+                ]
+              },
+              {
+                "cells": [
+                  "7",
+                  "8",
+                  "12"
+                ]
+              }
+            ],
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4000900,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "The result of determinant is -9",
+            "match": {
+              "arguments": [
+                {
+                  "val": "-9",
+                  "offset": 29
+                }
+              ],
+              "location": "MatrixSteps.iFindAsDeterminantResult(double)"
+            },
+            "keyword": "Then "
+          }
+        ]
+      }
+    ],
+    "name": "Matrix",
+    "description": "",
+    "id": "matrix",
+    "keyword": "Feature",
+    "uri": "file:Features/matrix.feature",
+    "tags": []
+  }
+]
